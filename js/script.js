@@ -16,6 +16,8 @@ layer.fullscreen()
 
 let camera = new Camera2D(new Vector(0, 0))
 
+let saveBtn = document.querySelector('.btn--save')
+let loadBtn = document.querySelector('.btn--load')
 let runBtn = document.querySelector('.btn--run')
 let zoomOutBtn = document.querySelector('.btn__zoom--out')
 let zoomInBtn = document.querySelector('.btn__zoom--in')
@@ -94,7 +96,8 @@ let showGrid = false
 
 function mouseScroll(e) {
   let dir = e.deltaY > 0 ? 1 : -1
-  neededZoom = Math.min(Math.max(MIN_ZOOM, neededZoom + dir * ZOOM_STEP * -1), MAX_ZOOM)
+  let zoomStep = e.step || ZOOM_STEP
+  neededZoom = Math.min(Math.max(MIN_ZOOM, neededZoom + dir * zoomStep * -1), MAX_ZOOM)
 }
 
 let startStep = 40
@@ -286,14 +289,38 @@ function keyPressed() {
   }
 }
 
-runBtn.addEventListener('click', timer)
-
-zoomOutBtn.addEventListener('click', () => {
-  mouseScroll({deltaY: 1})
+saveBtn.addEventListener('click', () => {
+  save()
 })
 
-zoomInBtn.addEventListener('click', () => {
-  mouseScroll({deltaY: -1})
+loadBtn.addEventListener('click', () => {
+  loadInput.click()
+})
+
+runBtn.addEventListener('click', timer)
+
+let zoomOutInterval, zoomInInterval
+
+zoomOutBtn.addEventListener('pointerdown', () => {
+  mouseScroll({ deltaY: 1, step: 0.001 })
+  zoomOutInterval = setInterval(() => {
+    mouseScroll({ deltaY: 1, step: 0.001 })
+  }, 1000 / 60)
+})
+
+zoomOutBtn.addEventListener('pointerup', () => {
+  clearInterval(zoomOutInterval)
+})
+
+zoomInBtn.addEventListener('pointerdown', () => {
+  mouseScroll({ deltaY: -1, step: 0.001 })
+  zoomInInterval = setInterval(() => {
+    mouseScroll({ deltaY: -1, step: 0.001 })
+  }, 1000 / 60)
+})
+
+zoomInBtn.addEventListener('pointerup', () => {
+  clearInterval(zoomInInterval)
 })
 
 function loopFunc() {

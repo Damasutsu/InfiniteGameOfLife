@@ -8,12 +8,67 @@ body {
   margin: 0;
 }
 
+.ui__bottom {
+  pointer-events: none;
+  width: 100%;
+  display: flex;
+  padding: 0.5rem;
+  position: absolute;
+  box-sizing: border-box;
+  bottom: 0;
+  justify-content: space-between;
+}
+
+.ui__left {
+  display: flex;
+  align-self: flex-start;
+  justify-content: space-between;
+}
+
+.ui__center {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+}
+
+.ui__right {
+  display: flex;
+  align-self: flex-end;
+  justify-content: space-between;
+}
+
 .btn {
+  pointer-events: auto;
+  cursor: pointer;
   display: none;
+  font-family: sans-serif;
+  color: white;
+  background-color: hsl(0deg 0% 20% / 66%);
+  padding: 0.5rem 1rem;
+  font-size: .75rem;
+  line-height: 1rem;
+  height: 2rem;
+  box-sizing: border-box;
+}
+
+.btn:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.btn--save, .btn--load, .btn--run, .btn__zoom--out, .btn__zoom--in {
+  display: block;
+}
+
+.btn--save::before {
+  content: 'Save';
+}
+
+.btn--load::before {
+  content: 'Load';
 }
 
 .btn--run::before {
-  content: 'RUN';
+  content: 'Run';
 }
 
 .btn__zoom--out::before {
@@ -25,30 +80,11 @@ body {
 }
 
 .playing .btn--run::before {
-  content: 'STOP';
+  content: 'Stop';
 }
 
 @media (any-pointer: coarse) {
   .btn {
     display: block;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    bottom: 0;
-    font-family: sans-serif;
-    color: white;
-    background-color: hsl(0deg 0% 20% / 66%);
-    padding: 0.5rem 1rem;
-    font-size: .75rem;
-  }
-
-  .btn__zoom--out {
-    left: initial;
-    right: 3rem;
-  }
-
-  .btn__zoom--in {
-    left: initial;
-    right: 0rem;
   }
 }
