@@ -53,9 +53,9 @@ function mousePressed(e) {
   }
 }
 
-function contextMenu(e) {
+addEventListener('contextmenu', (e) => {
   e.preventDefault()
-}
+})
 
 function mouseMoved(e) {
   if (mouse.isPressed) {
