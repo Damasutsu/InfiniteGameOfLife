@@ -309,7 +309,7 @@ function loopFunc() {
   step = startStep
   layer.background(15, 20, 30)
   layer.fill(255)
-  layer.noStroke()
+  layer.stroke(15, 20, 30)
   layer.strokeWeight(1)
   camera.set(mouse.pos, 0.05)
   zoom = lerp(zoom, neededZoom, 0.05)
