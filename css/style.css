@@ -8,3 +8,30 @@ body {
   overscroll-behavior-y: contain;
   margin: 0;
 }
+
+.btn--run {
+  display: none;
+}
+
+.btn--run::before {
+  content: 'RUN';
+}
+
+.playing .btn--run::before {
+  content: 'STOP';
+}
+
+@media (any-pointer: coarse) {
+  .btn--run {
+    display: block;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    bottom: 0;
+    font-family: sans-serif;
+    color: white;
+    background-color: hsl(0deg 0% 20% / 66%);
+    padding: 0.5rem 1rem;
+    font-size: .75rem;
+  }
+}

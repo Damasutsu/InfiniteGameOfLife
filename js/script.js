@@ -1,6 +1,6 @@
 let layer = new Layer()
 
-let mouseControls = new MouseControls()
+let mouseControls = new MouseControls(layer.canvas)
 
 let keyControls = new KeyControls(window, ['Space', 'KeyK', 'KeyR', 'KeyL', 'KeyS', 'KeyG', 'KeyC'])
 
@@ -15,6 +15,8 @@ loadInput.addEventListener('input', () => {
 layer.fullscreen()
 
 let camera = new Camera2D(new Vector(0, 0))
+
+let runBtn = document.querySelector('.btn--run')
 
 let mouse = {
   pos: new Vector(0, 0),
@@ -111,6 +113,7 @@ let timerTime = 0
 
 function timer() {
   isPlaying = !isPlaying
+  document.body.classList.toggle('playing', isPlaying)
 }
 
 let isMur = true
@@ -281,8 +284,9 @@ function keyPressed() {
   }
 }
 
-function loopFunc() {
+runBtn.addEventListener('click', timer)
 
+function loopFunc() {
   if (isPlaying) {
     timerTime = (timerTime + 1) % 2
     if (timerTime === 0) {
