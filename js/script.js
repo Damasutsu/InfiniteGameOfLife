@@ -17,6 +17,8 @@ layer.fullscreen()
 let camera = new Camera2D(new Vector(0, 0))
 
 let runBtn = document.querySelector('.btn--run')
+let zoomOutBtn = document.querySelector('.btn__zoom--out')
+let zoomInBtn = document.querySelector('.btn__zoom--in')
 
 let mouse = {
   pos: new Vector(0, 0),
@@ -285,6 +287,14 @@ function keyPressed() {
 }
 
 runBtn.addEventListener('click', timer)
+
+zoomOutBtn.addEventListener('click', () => {
+  mouseScroll({deltaY: 1})
+})
+
+zoomInBtn.addEventListener('click', () => {
+  mouseScroll({deltaY: -1})
+})
 
 function loopFunc() {
   if (isPlaying) {
