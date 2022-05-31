@@ -55,7 +55,7 @@ body {
   margin-right: 0.5rem;
 }
 
-.btn--save, .btn--load, .btn--run, .btn__zoom--out, .btn__zoom--in {
+.btn--save, .btn--load, .btn__zoom--out, .btn__zoom--in {
   display: block;
 }
 
