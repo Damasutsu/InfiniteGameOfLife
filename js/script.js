@@ -271,7 +271,7 @@ function keyPressed() {
     showGrid = !showGrid
   }
 
-  if (keyControls.keys.KeyK.down) {
+  if (keyControls.keys.KeyK.pressed) {
     nextGeneration()
   }
 

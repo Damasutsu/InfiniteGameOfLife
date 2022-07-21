@@ -5,6 +5,7 @@ class Layer {
     this.canvas.classList.add('layer')
     this.context = this.canvas.getContext('2d')
     container.appendChild(this.canvas)
+    this.canvas.style.display = 'block'
     this.size(100, 100)
     this.fitToContainer.call(this)
     addEventListener('resize', function() {

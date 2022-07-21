@@ -82,8 +82,8 @@ class Vector {
 
   cross(vec) {
     if (vec instanceof Vector) {
-      let x = this.y * vec.z - this.z * vec.y;
-      let y = this.z * vec.x - this.x * vec.z;
+      let x = this.y * vec.z - this.z * vec.y
+      let y = this.z * vec.x - this.x * vec.z
       let z = this.x * vec.y - this.y * vec.x;
       [this.x, this.y, this.z] = [x, y, z]
       return this
@@ -92,9 +92,9 @@ class Vector {
 
   static cross(vec, vec2) {
     if (vec instanceof Vector && vec2 instanceof Vector) {
-      let x = vec.y * vec2.z - vec.z * vec2.y;
-      let y = vec.z * vec2.x - vec.x * vec2.z;
-      let z = vec.x * vec2.y - vec.y * vec2.x;
+      let x = vec.y * vec2.z - vec.z * vec2.y
+      let y = vec.z * vec2.x - vec.x * vec2.z
+      let z = vec.x * vec2.y - vec.y * vec2.x
       return new Vector(x, y, z)
     }
   }
